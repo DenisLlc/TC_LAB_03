@@ -371,13 +371,13 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    2,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    3,    1,    1,    1,
         1,    3,    3,    1,    3,    4,    3,    5,    5,    5,
         5,    5,    5,    5,    5,    5,    5,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    3,    1,    1,    1,    1,    1,    1,
 
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -1805,7 +1805,16 @@ void evaluate(){
             }else{
                 resultado = operador1 / operador2;
             }
-            break;   
+            break;
+        case '%':
+            resultado = (int)operador1 % (int)operador2;
+            break;
+        case '^':
+                resultado = 1;
+            for(int i = 0; i < operador2; i++){
+                resultado *= operador1; 
+            }
+            break;  
     }
     printf("El resultado de la operacion es: %f \n",resultado);
 }

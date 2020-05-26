@@ -5,7 +5,7 @@
 /*Definicion*/
 DIGITO [0-9]
 NUMERO {DIGITO}+(\.{DIGITO}+)?
-OPERACIONES [+*/-]
+OPERACIONES [+\-*/%^]
 %{
     char operaciones;
     float operador1=0, operador2=0, resultado=0;
@@ -66,7 +66,16 @@ void evaluate(){
             }else{
                 resultado = operador1 / operador2;
             }
-            break;   
+            break;
+        case '%':
+            resultado = (int)operador1 % (int)operador2;
+            break;
+        case '^':
+                resultado = 1;
+            for(int i = 0; i < operador2; i++){
+                resultado *= operador1; 
+            }
+            break;  
     }
     printf("El resultado de la operacion es: %f \n",resultado);
 }
